@@ -1,3 +1,5 @@
+import { techBook } from './interfaces';
+
 const techBooksUrl = 'https://edwardtanguay.netlify.app/share/techBooks.json';
 
 export const books = [
@@ -11,13 +13,13 @@ export const books = [
 	}
 ];
 
-export const getTechBooks = (language = null) => {
-	return new Promise((resolve, reject) => {
+export const getTechBooks = (language:string = '') => {
+	return new Promise<techBook[]>((resolve) => {
 		setTimeout(() => {
 			(async () => {
 				const response = await fetch(techBooksUrl);
 				const techBooks = await response.json();
-				if (language !== null) {
+				if (language !== '') {
 					resolve(techBooks.filter((m:any) => m.language === 'french'));
 				} else {
 					resolve(techBooks);
