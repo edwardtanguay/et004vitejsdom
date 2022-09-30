@@ -1,0 +1,36 @@
+body {
+	background-color: #333;
+	color: #ccc;
+	font-family: sans-serif;
+	padding: 0 1rem;
+
+	.books {
+		.book {
+			background-color: #222;
+			margin-bottom: 1rem;
+			padding: 1rem;
+			width: 23rem;
+
+			.title {
+				color: rgb(222, 222, 134);
+			}
+		}
+	}
+
+	.techBooks {
+		.techBook {
+			background: #111;
+			border-radius: 5px;
+			border: 1px solid #777;
+			margin-bottom: 1rem;
+			padding: 1rem;
+			width: 23rem;
+
+			.title {
+				color: rgb(207, 156, 68);
+				font-size: 1.4rem;
+			}
+		}
+
+	}
+}

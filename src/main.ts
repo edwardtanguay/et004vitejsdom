@@ -1,23 +1,35 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import { setupCounter } from './counter'
+import { books, getTechBooks } from './model.js';
+import './style.scss';
+
+const techBooks = await getTechBooks();
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+	<h1>Book Site</h1>
+	<h2>There are ${books.length} books:</h2>
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+	<div class="books">
+		${books
+			.map((book) => {
+				return `
+			<div class="book">
+				<div class="title">${book.title}</div>
+				<div class="description">${book.author}</div>
+			</div>
+			`;
+			})
+			.join('')}	
+	</div>
+	<h2>There are ${techBooks.length} tech books:</h2>
+	<div class="techBooks">
+		${techBooks
+			.map((techBook) => {
+				return `
+			<div class="techBook">
+				<div class="title">${techBook.title}</div>
+				<div class="description">${techBook.description}</div>
+			</div>
+			`;
+			})
+			.join('')}	
+	</div>
+`;
